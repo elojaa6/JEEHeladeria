@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      >
+    <h:head>
+        <meta charset="UTF-8"/>
+        <title>Formulario Producto</title>
+
+        <link href="recursos/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="recursos/css/propio.css" rel="stylesheet"/>
+        <f:event type="preRenderView" listener="#{controlarSesion.verificarSesion()}"/>
+
+        <style type="text/css">
+            .linea {
+                border-top: 1px solid black;
+                height: 2px;
+                padding: 0;
+                margin: 20px auto 0 auto;
+            }
+            /* menu desplegable */
+
+#menu ul ul {
+ display:none;
+ position:absolute;
+ top:100%;
+ left:0;
+ background:#eee;
+ padding:0;
+}
+
+/* items del menu desplegable */
+
+#menu ul ul li {
+ float:none;
+ width:150px
+}
+
+/* enlaces de los items del menu desplegable */
+
+#menu ul ul a {
+ line-height:120%;
+ padding:10px 15px;
+}
+
+/* items del menu desplegable al pasar el ratón */
+
+#menu ul li:hover > ul {
+ display:block;
+}
+</style>
+
+    </h:head>
+    <h:body>
+
+
+
+
+       
+        <div class="row justify-content-center">
+        
+             <div class="col col-md-4 ">
+           
+                <p:growl id="mensajes" showDetail="true" life="2000" />
+                <h:form>
+                     
+                     <br></br>
+                     <br></br>
+                      <h1>Detalles </h1>
+                      <br></br>
+                      <br></br>
+                    <h:commandButton action="pedidoCRUD.xhtml" value="volver"/>
+                    
+                    <h:dataTable value="#{pedidoBeans.detalles}" var="o" styleClass="tabla"
+			headerClass="cabeceraTabla" rowClasses="filaPar,filaImpar">
+			<h:column>
+				<f:facet name="header">Id</f:facet>#{o.id}</h:column>
+			<h:column>
+				<f:facet name="header">cantidad</f:facet>
+				<h:outputText value="#{o.cantidad}"  />
+			</h:column>
+                        <h:column>
+				<f:facet name="header">precio</f:facet>
+				<h:outputText value="#{o.precio}"  />
+			</h:column>
+                        <h:column>
+				<f:facet name="header">subtotal</f:facet>
+				<h:outputText value="#{o.subtotal}"  />
+			</h:column>
+                        <h:column>
+				<f:facet name="header">producto</f:facet>
+				<h:outputText value="#{o.producto.nombre}"  />
+			</h:column>
+			
+		
+		</h:dataTable>
+                </h:form>
+
+          
+        </div> 
+            </div>
+    </h:body>
+</html>

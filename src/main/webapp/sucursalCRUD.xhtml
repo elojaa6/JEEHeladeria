@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Seccion Sucursal</title>
+        <link href="recursos/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="recursos/css/propio.css" rel="stylesheet"/>
+
+        <f:event type="preRenderView" listener="#{controlarSesion.verificarSesion()}"/>
+
+
+    </h:head>
+    <h:body class="cuerpo">
+        <!-- Menú -->
+        <nav class="navbar navbar-expand-lg bg-light fixed-top d-flex">
+            <div class="container-fluid">
+                <a class="navbar-brand">HELADERÍA</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="AdminInicio.xhtml">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="productoCRUD.xhtml">Productos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="sucursalCRUD.xhtml">Sucursal</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="EntidadpCRUD.xhtml">Entidad</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="clienteCRUD.xhtml">Cliente</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="usuarioCRUD.xhtml">Usuarios</a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link" href="categoriaCRUD.xhtml">Categorias</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pedidoCRUD.xhtml">Pedidos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="verFacturasCRUD.xhtml">Faturas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ListarClientes.xhtml">Lista</a>
+                        </li>
+
+                    </ul>
+                    <h:form> <p:commandButton  icon="pi-sign-out" value="Cerrar Sesion" actionListener="#{cerrarS.cerrarSesion()}"  />
+                    </h:form>
+                </div>
+            </div>
+        </nav>
+
+
+        <section>
+            <div class="row justify-content-center">
+                <div class="col col-md-5 justify-content-center">    
+                    <h3 class="h3Sucursal mb-md-5">Sucursal</h3>
+                    <div class="row justify-content-center">
+                        <div class="col col-md-7">
+                            <h:form>
+                                <h:outputText value="No existen producto en la base de datos!" rendered="#{empty listadoSucursales}"/>
+                                <h:dataTable value="#{listadoSucursales}" var="prod" rendered="#{not empty listadoSucursales}"
+                                             headerClass="cabeceraTabla" rowClasses="filaPar,filaImpar">
+
+                                    <h:column>
+                                        <f:facet name="header">Id</f:facet>
+                                            #{prod.id}
+                                    </h:column>
+                                     <h:column>
+                                        <f:facet name="header">Nombre</f:facet>
+
+                                        <h:outputText value="#{prod.nombre}"  />
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Teléfono</f:facet>
+
+                                        <h:outputText value="#{prod.telefono}"  />
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Dirección</f:facet>
+
+                                        <h:outputText value="#{prod.direccion}"  />
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Ciudad</f:facet>
+
+                                        <h:outputText value="#{prod.ciudad}" />
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">Correo</f:facet>
+
+                                        <h:outputText value="#{prod.correo}"  />
+                                    </h:column>
+                                     <h:column>
+                                        <f:facet name="header">Longitud</f:facet>
+
+                                        <h:outputText value="#{prod.longitud}"  />
+                                    </h:column>
+                                     <h:column>
+                                        <f:facet name="header">Latitud</f:facet>
+
+                                        <h:outputText value="#{prod.latitud}"  />
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header"> NombreEntidad </f:facet>
+                                        <h:outputText value="#{prod.entidadPrincipal.nombre}" />
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header"> Editar </f:facet>
+                                        <h:commandLink value="Editar" action="#{sucursalBeans.editar(prod.id)}" />
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header"> Action </f:facet>
+
+                                        <h:commandLink value="Eliminar" action="#{sucursalBeans.eliminar(prod.id)}" />
+                                    </h:column>
+                                </h:dataTable>
+
+
+                                <div class="row justify-content-center mt-md-5">
+                                    <div class="col col-md-3">
+                                        <h:commandButton class="btn btn-outline-info" value="Añadir" action="formSucursal.xhtml" />
+                                    </div>
+                                </div>
+
+
+                            </h:form>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+
+        <script src="js/bootstrap.min.js" />
+    </h:body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Seccion Clientes</title>
+        <link href="recursos/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="recursos/css/propio.css" rel="stylesheet"/>
+        <f:event type="preRenderView" listener="#{controlarSesion.verificarSesion()}"/>
+        <style>
+            .linea {
+                border-top: 1px solid black;
+                height: 2px;
+                padding: 0;
+                margin: 20px auto 0 auto;
+            }
+            .tabla {
+                border-collapse: collapse;
+            }
+
+            .cabeceraTabla {
+                text-align: center;
+                background: none repeat scroll 0 0 #E5E5E5;
+                border-bottom: 1px solid #BBBBBB;
+                padding: 8px;
+            }
+
+            .filaPar {
+                text-align: center;
+                background: none repeat scroll 0 0 #FFFFFFF;
+                border-top: 1px solid #BBBBBB;
+            }
+
+            .filaImpar {
+                text-align: center;
+                background: none repeat scroll 0 0 #F9F9F9;
+                border-top: 1px solid #BBBBBB;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <nav class="navbar navbar-expand-lg bg-light fixed-top d-flex">
+            <div class="container-fluid">
+                <a class="navbar-brand">HELADERÍA</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="AdminInicio.xhtml">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="productoCRUD.xhtml">Productos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="sucursalCRUD.xhtml">Sucursal</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="EntidadpCRUD.xhtml">Entidad</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="clienteCRUD.xhtml">Cliente</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="usuarioCRUD.xhtml">Usuarios</a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link" href="categoriaCRUD.xhtml">Categorias</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pedidoCRUD.xhtml">Pedidos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="verFacturasCRUD.xhtml">Faturas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ListarClientes.xhtml">Lista</a>
+                        </li>
+
+                    </ul>
+                   <h:form> <p:commandButton  icon="pi-sign-out" value="Cerrar Sesion" actionListener="#{cerrarS.cerrarSesion()}"  />
+                    </h:form>
+                </div>
+            </div>
+        </nav>
+        <div class="linea"></div>
+
+        <section>
+            <div class="row justify-content-center">
+                <div class="col col-md-3 mt-md-4 mb-md-4">
+                    <h3 class="h3Sucursal">Seccion Clientes</h3>
+                </div>
+            </div>
+        </section>
+
+        <h:form>
+            
+            <h:outputText value="No existen producto en la base de datos!" rendered="#{empty listadoClientes}"/>
+            <h:dataTable value="#{listadoClientes}" var="prod" rendered="#{not empty listadoClientes}"
+                         headerClass="cabeceraTabla" rowClasses="filaPar,filaImpar">
+
+                <h:column>
+                    <f:facet name="header">Id</f:facet>
+                        #{prod.id}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Cedula</f:facet>
+                    <h:outputText value="#{prod.cedula}"  />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Nombre</f:facet>
+
+                    <h:outputText value="#{prod.nombre}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Apellido</f:facet>
+
+                    <h:outputText value="#{prod.apellido}"  />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Correo</f:facet>
+
+                    <h:outputText value="#{prod.correo}"  />
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Contraseña</f:facet>
+
+                    <h:outputText value="#{prod.contrasenia}"  />
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">Telefono</f:facet>
+
+                    <h:outputText value="#{prod.telefono}"  />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Direccion</f:facet>
+
+                    <h:outputText value="#{prod.direccion}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header"> Editar </f:facet>
+                    <h:commandLink value="Editar" action="#{clienteBeans.editar(prod.id)}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header"> Eliminar </f:facet>
+
+                    <h:commandLink value="Eliminar" action="#{clienteBeans.eliminar(prod.id)}" />
+                </h:column>
+            </h:dataTable>
+            <div class="row justify-content-center mt-md-5">
+                <div class="col col-md-3">
+                    <h:commandButton class="btn btn-outline-info" value="Añadir" action="formCliente.xhtml" />
+                </div>
+            </div>
+
+        </h:form>
+
+    </h:body>
+</html>

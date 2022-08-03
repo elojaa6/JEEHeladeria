@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta charset="UTF-8"/>
+        <title>Formulario Pedido</title>
+    </h:head>
+    <h:body>
+
+        <h:panelGrid border="1">
+            <p:growl id="mensajes" showDetail="true" life="2000" />
+            <f:facet name="header">
+                <h:outputText value="Formulario Producto"/>
+            </f:facet>
+            <h:link outcome="pedidoCRUD.xhtml" value="volver"/>
+            <h:form>
+                <h:panelGrid columns="2">
+
+
+                    <h:outputLabel value="Nombre" for="nombre"/>
+                    <h:outputText id="nombre" value="#{pedidoBeans.pedido.cliente.nombre}"/>
+
+                    <h:outputLabel value="costoEnvio" for="costoEnvio"/>
+                    <h:outputText id="costoEnvio" value="#{pedidoBeans.pedido.costoEnvio}" />
+
+                    <h:outputLabel value="latitud" for="latitud"/>
+                    <h:outputText id="latitud" value="#{pedidoBeans.pedido.latitud}" />
+                    <h:outputLabel value="longitud" for="longitud"/>
+
+                    <h:outputLabel id="longitud" value="#{pedidoBeans.pedido.longitud}" />
+
+
+
+
+                    <h:outputLabel value="total" for="total"/>
+                    <h:outputLabel id="total" value="#{pedidoBeans.pedido.total}" />
+
+
+                    <h:outputLabel value="estado" for="estado"/>
+                    <h:selectOneMenu   value="#{pedidoBeans.pedido.estado}" >
+                        <f:selectItem itemLabel="-----Seleccione---------- " />
+                        <f:selectItem  itemValue="Aceptado" itemLabel="Aceptado" />
+                        <f:selectItem  itemValue="Entregado " itemLabel="Entregado " />
+                        <f:selectItem itemValue="Enviando" itemLabel="Enviando" />
+                        <f:selectItem itemValue="Rechazado" itemLabel="Rechazado" />
+
+
+                    </h:selectOneMenu>
+
+                    <h:commandButton value="Guardar" action="#{pedidoBeans.guardar}"/>
+                    <h:inputHidden value="#{pedidoBeans.pedido.id}"/>
+                </h:panelGrid>
+            </h:form>
+
+        </h:panelGrid>
+    </h:body>
+</html>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      >
+    <h:head>
+        <meta charset="UTF-8"/>
+        <title>Formulario Usuario</title>
+
+        <style type="text/css">
+            body{
+                background-image:url(recursos/fClientes.jpeg);
+                background-repeat: no-repeat;
+                background-position: 100% ;
+                height: 400px;
+                padding-right: 15%;
+                background-size: cover;
+            }
+
+            h3{
+                font-size: 35pt;
+                text-align: center;
+            }
+
+            .card{
+                margin-left: 38%;
+            }
+
+        </style>
+
+    </h:head>
+    <h:body>
+
+       
+
+        <br></br><br></br>
+
+        <h3>Formulario Usuario</h3>
+
+        <div class="card">
+            <h:panelGrid border="1">
+                <p:growl id="mensajes" showDetail="true" life="2000" />
+                <h:link outcome="usuarioCRUD.xhtml" value="volver"/>
+                <h:form>
+                    <h:panelGrid columns="2">
+
+
+                        <h:outputLabel value="cedula" for="cedula"/>
+                        <h:inputText id="cedula" value="#{usuarioBeans.usuario.cedula}"     />
+
+                        <h:outputLabel value="nombre" for="nombre"/>
+                        <h:inputText id="nombre" value="#{usuarioBeans.usuario.nombre}" required="true" requiredMessage="Ingrese el nombre"/>
+
+                        <h:outputLabel value="apellido" for="apellido"/>
+                        <h:inputText id="apellido" value="#{usuarioBeans.usuario.apellido}" required="true" requiredMessage="Ingrese el apellido"/>
+                        
+                        <h:outputLabel value="correo" for="correo"/>
+
+                        <h:inputText id="correo" value="#{usuarioBeans.usuario.correo}" required="true" requiredMessage="Ingrese una Correo"/>
+
+
+                        <h:outputLabel value="contrasenia" for="contrasenia"/>
+                        <h:inputText id="contrasenia" value="#{usuarioBeans.usuario.contrasenia}" required="true" requiredMessage="Ingrese una contraceña"/>
+                        
+                        <h:outputLabel value="tipoUs" for="tipoUs"/>
+                        <h:selectOneRadio   value="#{usuarioBeans.usuario.tipoUs}" required="true" requiredMessage="Seleccione el tipo de Usuario">
+                            <f:selectItem  itemValue="Administrador" itemLabel="Administrdor" />
+                            <f:selectItem itemValue="Empleado" itemLabel="Empleado" />
+                        </h:selectOneRadio>  
+
+
+                        <h:outputLabel value="telefono" for="telefono" />
+                        <h:inputText id="telefono" value="#{usuarioBeans.usuario.telefono}" required="true" requiredMessage="Ingrese el telefono"/>
+
+                        <h:outputLabel value="direccion" for="direccion"/>
+                        <h:inputText id="direccion" value="#{usuarioBeans.usuario.direccion}" required="true" requiredMessage="Ingrese la  direccion"/>
+
+
+
+                        <h:commandButton value="Guardar" action="#{usuarioBeans.guardar}"/>
+                        <h:inputHidden value="#{usuarioBeans.usuario.id}"/>
+                    </h:panelGrid>
+                </h:form>
+
+            </h:panelGrid>
+        </div> 
+    </h:body>
+</html>

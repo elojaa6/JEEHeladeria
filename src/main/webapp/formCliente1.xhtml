@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      >
+    <h:head>
+        <meta charset="UTF-8"/>
+        <title>Formulario Cliente</title>
+
+        <style type="text/css">
+            body{
+                background-image:url(recursos/loginA.jpg);
+                background-repeat: no-repeat;
+                background-position: 100% ;
+                height: 400px;
+                padding-right: 15%;
+                background-size: cover;
+            }
+            .fInicio{
+                margin-top: 15%;
+                margin-left: 30%;
+            }
+            .gridInicio{
+                padding: 10%;
+            }
+            .oLabel{
+                color: #0a53be !important;
+            }
+        </style>
+
+
+
+        </style>
+
+    </h:head>
+    <h:body>
+
+
+        <br></br><br></br>
+
+        <h3>Formulario Cliente</h3>
+
+        <div class="card">
+            <p:growl id="mensajes" showDetail="true" life="2000" />
+            <h:panelGrid border="1">
+
+                <h:form>
+                    <h:panelGrid columns="2">
+
+
+                        <h:outputLabel value="cedula" for="cedula"/>
+                        <h:inputText id="cedula" value="#{clienteBeans.cliente.cedula}" required="true" requiredMessage="Ingrese el cedula"/>
+
+                        <h:outputLabel value="nombre" for="nombre"/>
+                        <h:inputText id="nombre" value="#{clienteBeans.cliente.nombre}" required="true" requiredMessage="Ingrese el nombre"/>
+
+                        <h:outputLabel value="apellido" for="apellido"/>
+                        <h:inputText id="apellido" value="#{clienteBeans.cliente.apellido}" required="true" requiredMessage="Ingrese el apellido"/>
+
+                       
+
+
+
+                        <h:outputLabel value="telefono" for="telefono"/>
+                        <h:inputText id="telefono" value="#{clienteBeans.cliente.telefono}" required="true" requiredMessage="Ingrese el telefono"/>
+
+                        <h:outputLabel value="direccion" for="direccion"/>
+                        <h:inputText id="direccion" value="#{clienteBeans.cliente.direccion}" required="true" requiredMessage="Ingrese una direccion"/>
+
+
+
+                        <h:commandButton value="Guardar" action="#{clienteBeans.guardar}"/>
+                        <h:inputHidden value="#{clienteBeans.cliente.id}"/>
+                    </h:panelGrid>
+                </h:form>
+
+            </h:panelGrid>
+        </div> 
+    </h:body>
+</html>

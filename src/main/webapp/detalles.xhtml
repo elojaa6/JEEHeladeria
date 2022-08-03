@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="US-ASCII" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <f:metadata>
+            <f:viewParam name="codigo" value="#{facturaBean.codigoFactura}"></f:viewParam>
+            <f:viewAction action="#{facturaBean.loadDetalles()}"/>
+        </f:metadata>
+    </h:head>
+    <ui:composition template="./plantilla.xhtml">
+        <h:head>
+            <title>Detalles Factura</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+
+        </h:head>
+        <ui:define name="content">
+            <div class="container">
+
+                <h:form class="container-fluid ">
+                    <h:dataTable class="table table-striped" value="#{facturaBean.detallesvista}" var="o" >
+                        <h:column>
+                            <f:facet name="header">Descripcion</f:facet>
+                                #{o.descripcion}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Precio Unitario</f:facet>
+                                #{o.precioUnitario}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Cantidad</f:facet>
+                                #{o.cantidad}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Precio Total</f:facet>
+                                #{o.precioTotal}
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+
+            </div><!-- /.container -->
+        </ui:define>
+    </ui:composition>
+</html>
+

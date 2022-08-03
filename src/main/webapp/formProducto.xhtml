@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta charset="UTF-8"/>
+        <title>Formulario Producto</title>
+    </h:head>
+    <h:body>
+
+        <h:panelGrid border="1">
+            <p:growl id="mensajes" showDetail="true" life="2000" />
+            <f:facet name="header">
+                <h:outputText value="Formulario Producto"/>
+            </f:facet>
+            <h:link outcome="productoCRUD.xhtml" value="volver"/>
+            <h:form>
+                <h:panelGrid columns="2">
+
+
+                    <h:outputLabel value="Nombre" for="nombre"/>
+                    <h:inputText id="nombre" value="#{productoBeans.producto.nombre}" required="true" requiredMessage="Ingrese el nombre"/>
+
+                    <h:outputLabel value="Descripcion" for="descripcion"/>
+                    <h:inputText id="descripcion" value="#{productoBeans.producto.descripcion}" required="true" requiredMessage="Ingrese el descripcion"/>
+
+                    <h:outputLabel value="Marca" for="marca"/>
+                    <h:inputText id="marca" value="#{productoBeans.producto.marca}" required="true" requiredMessage="Ingrese el marca"/>
+                    <h:outputLabel value="Stock" for="stock"/>
+
+                    <h:inputText id="stock" value="#{productoBeans.producto.stock}" required="true" requiredMessage="Ingrese el stock"/>
+
+
+                    <h:outputLabel value="Estado" for="estado"/>
+                    <h:inputText id="estado" value="#{productoBeans.producto.estado}" required="true" requiredMessage="Ingrese el estado"/>
+
+                    <h:outputLabel value="Precio" for="precio"/>
+                    <h:inputText id="precio" value="#{productoBeans.producto.precio}" required="true" requiredMessage="Ingrese el precio"/>
+
+                    <h:outputLabel value="Sucursal" for="sucursal"/>
+                    <h:selectOneMenu id="sucursal" value="#{productoBeans.producto.sucursal}" required="true" requiredMessage="Seleccione una sucursal">
+                        <f:selectItem itemLabel="--- Seleccione una Sucursal ---" itemValue="#{null}"/>
+                        <f:selectItems value="#{listadoSucursales}" var="su" itemLabel="#{su.nombre}"/>
+                        <f:converter binding="#{sucursalConverter}"/>
+                    </h:selectOneMenu>
+                    
+                    <h:outputLabel value="Categoria" for="categoria"/>
+                    <h:selectOneMenu id="categoria" value="#{productoBeans.producto.categorias}" required="true" requiredMessage="Seleccione una Categoria">
+                        <f:selectItem itemLabel="--- Seleccione una Categoria ---" itemValue="#{null}"/>
+                        <f:selectItems value="#{listadoCategorias}" var="su" itemLabel="#{su.nombre}"/>
+                        <f:converter binding="#{CategoriaConverter}"/>
+                    </h:selectOneMenu>
+
+
+                    <h:commandButton value="Guardar" action="#{productoBeans.guardar}"/>
+                    <h:inputHidden value="#{productoBeans.producto.id}"/>
+                </h:panelGrid>
+            </h:form>
+
+        </h:panelGrid>
+    </h:body>
+</html>

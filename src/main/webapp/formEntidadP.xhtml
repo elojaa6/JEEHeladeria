@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta charset="UTF-8"/>
+        <title>Formulario Entidad</title>
+    </h:head>
+    <h:body>
+
+        <h:panelGrid border="1">
+            <p:growl id="mensajes" showDetail="true" life="2000" />
+            <f:facet name="header">
+                <h:outputText value="Formulario Entidad"/>
+            </f:facet>
+            <h:link outcome="EntidadpCRUD.xhtml" value="volver"/>
+            <h:form>
+                <h:panelGrid columns="2">
+
+
+                    <h:outputLabel value="Nombre" for="Nombre"/>
+                    <h:inputText id="Nombre" value="#{entidadpBeans.entidadp.nombre}" required="true" requiredMessage="Ingrese el nombre"/>
+
+                    <h:outputLabel value="Ruc" for="Ruc"/>
+                    <h:inputText id="Ruc" value="#{entidadpBeans.entidadp.ruc}" required="true" requiredMessage="Ingrese el ruc"/>
+
+                    <h:outputLabel value="Telefono" for="Telefono"/>
+                    <h:inputText id="Telefono" value="#{entidadpBeans.entidadp.telefono}" required="true" requiredMessage="Ingrese el telefono"/>
+                    <h:outputLabel value="Direccion" for="Direccion"/>
+
+                    <h:inputText id="Direccion" value="#{entidadpBeans.entidadp.direccion}" required="true" requiredMessage="Ingrese el direccion"/>
+
+
+                    <h:commandButton value="Guardar" action="#{entidadpBeans.guardar}"/>
+                    <h:inputHidden value="#{entidadpBeans.entidadp.id}"/>
+                </h:panelGrid>
+            </h:form>
+
+        </h:panelGrid>
+    </h:body>
+</html>

@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <title>INICIO</title>
+        <f:event type="preRenderView" listener="#{controlarSesion.verificarSesion()}"/>
+        <link href="recursos/css/bootstrap.min.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="style.css"/>
+    </h:head>
+
+    <h:body>
+
+        <!-- Menú -->
+        <nav class="navbar navbar-expand-lg bg-light fixed-top d-flex">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">HELADERÍA</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="AdminInicio.xhtml">Inicio</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="productoCRUD.xhtml">Productos</a>
+                          
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="sucursalCRUD.xhtml">Sucursal</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="EntidadpCRUD.xhtml">Entidad</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="clienteCRUD.xhtml">Cliente</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="usuarioCRUD.xhtml">Usuarios</a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link" href="categoriaCRUD.xhtml">Categorias</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pedidoCRUD.xhtml">Pedidos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="verFacturasCRUD.xhtml">Faturas</a>
+                        </li>
+                        
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="ListarClientes.xhtml">Lista</a>
+                        </li>
+
+
+
+
+                    </ul>
+                    <h:form> <p:commandButton  icon="pi-sign-out" value="Cerrar Sesion" actionListener="#{cerrarS.cerrarSesion()}"  />
+                    </h:form>
+                </div>
+            </div>
+        </nav>
+
+        <section>
+            <div class="row mt-md-5">
+                <div class="col">
+                    <h1 style="font-size: 55pt; color: #25cff2; text-align: center; text-decoration: underline;">HELADERIA</h1>
+                </div>
+            </div>
+        </section>
+        <p:menuitem value="Salir" actionListener="#{cerrarS.cerrarSesion}" url="Inicio.xhtml" icon="pi pi-fw pi-power-off" />
+    </h:body>
+
+</html>

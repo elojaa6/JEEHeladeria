@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta charset="UTF-8"/>
+        <title>Formulario Categorias</title>
+    </h:head>
+    <h:body>
+        <p:growl id="mensajes" showDetail="true" life="2000" />
+
+        <h:panelGrid border="1">
+            <f:facet name="header">
+                <h:outputText value="Formulario Categorias"/>
+            </f:facet>
+            <h:link outcome="categoriaCRUD.xhtml" value="volver"/>
+            <h:form>
+                <p:growl id="mensajes" showDetail="true" life="2000" />
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Nombre" for="nombre"/>
+                    <h:inputText id="nombre" value="#{categoriaBeans.categorias.nombre}" required="true" requiredMessage="Ingrese el Nombre"/>
+                  
+
+                    <h:outputLabel value="Sucursal" for="Sucursal"/>
+                    <h:selectOneMenu id="categorias" value="#{categoriaBeans.categorias.sucursal}" required="true" requiredMessage="Seleccione la  Sucursal">
+                        <f:selectItem itemLabel="--- Seleccione Entidad Principal ---" itemValue="#{null}"/>
+                        <f:selectItems value="#{listadoSucursales}" var="su" itemLabel="#{su.nombre}"/>
+                        <f:converter binding="#{sucursalConverter}"/>
+                    </h:selectOneMenu>
+
+
+                    <p:commandButton value="Guardar" action="#{categoriaBeans.guardar}" update="mensajes" />
+                    <h:inputHidden value="#{categoriaBeans.categorias.id}"/>
+                </h:panelGrid>
+            </h:form>
+
+        </h:panelGrid>
+    </h:body>
+</html>

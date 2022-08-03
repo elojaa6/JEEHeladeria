@@ -1,0 +1,58 @@
+body.cuerpo{
+    padding-top: 4%;
+
+}
+
+.h3Sucursal{
+    text-align: center;
+    font-size: 35pt;
+    color: blue;
+}
+
+.header{
+    font-size: 15pt;
+}
+
+.tabla {
+    border-collapse: collapse;
+}
+
+.cabeceraTabla {
+    text-align: center;
+    background: none repeat scroll 0 0 #A2CCEB;
+    border-bottom: 1px solid #BBBBBB;
+    padding: 8px;
+    font-size: 14pt;    
+}
+
+.filaPar {
+    text-align: center;
+    background: none repeat scroll 0 0 #FFFFFFF;
+    border-top: 1px solid #BBBBBB;
+    font-size: 14pt;
+}
+
+.filaImpar {
+    text-align: center;
+    background: none repeat scroll 0 0 #F9F9F9;
+    border-top: 1px solid #BBBBBB;
+}
+
+.lista{
+    font-size: 13pt;
+
+}
+
+h3{
+    font-size: 35pt;
+    text-align: center;
+    color: blue;
+}
+.tabla {
+    border-collapse: collapse;
+}
+
+
+
+
+
