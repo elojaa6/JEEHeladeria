@@ -16,6 +16,8 @@ import java.io.Serializable;
  *
  * @author Jonny
  */
+@FacesConfig(version = FacesConfig.Version.JSF_2_3)
+
 @Named
 @RequestScoped
 public class ControlarSesion implements Serializable {
