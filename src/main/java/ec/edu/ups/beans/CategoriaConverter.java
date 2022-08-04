@@ -14,6 +14,8 @@ import java.util.Optional;
  *
  * @author Jonny
  */
+@FacesConfig(version = FacesConfig.Version.JSF_2_3)
+
 @RequestScoped
 @Named("CategoriaConverter")
 public class CategoriaConverter implements Converter<Categorias> {
