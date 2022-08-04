@@ -24,7 +24,6 @@ import java.util.List;
  */
 @Model
 @SessionScoped
-@FacesConfig(version = FacesConfig.Version.JSF_2_3)
 public class CategoriaBeans implements Serializable {
 
     @EJB
