@@ -22,6 +22,7 @@ import java.util.List;
  *
  * @author Jonny
  */
+@FacesConfig(version = FacesConfig.Version.JSF_2_3)
 @Model
 @SessionScoped
 public class CategoriaBeans implements Serializable {
