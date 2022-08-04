@@ -13,6 +13,9 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 import java.util.Optional;
+import jakarta.faces.annotation.FacesConfig;
+
+
 @FacesConfig(version = FacesConfig.Version.JSF_2_3)
 
 @RequestScoped
