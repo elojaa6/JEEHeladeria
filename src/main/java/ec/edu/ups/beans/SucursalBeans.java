@@ -31,6 +31,8 @@ import java.util.List;
  *
  * @author Jonny,Daniel,Elvis,Edisson
  */
+@FacesConfig(version = FacesConfig.Version.JSF_2_3)
+
 @SessionScoped
 @Model
 public class SucursalBeans implements Serializable {
