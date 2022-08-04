@@ -25,6 +25,8 @@ import java.util.List;
  *
  * @author Elvis
  */
+@FacesConfig(version = FacesConfig.Version.JSF_2_3)
+
 @SessionScoped
 @Model
 public class FacturaBeans implements Serializable {
