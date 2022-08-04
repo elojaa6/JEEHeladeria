@@ -32,6 +32,13 @@
 	  <artifactId>jsf-impl</artifactId>
 	  <version>2.1.7</version>
 	</dependency>
+	
+	<dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>jakarta.persistence</artifactId>
+            <version>2.2.3</version>
+        </dependency>
+
     
 	    
         <dependency>
