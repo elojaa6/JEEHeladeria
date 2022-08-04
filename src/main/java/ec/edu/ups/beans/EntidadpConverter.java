@@ -13,6 +13,8 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 
 import java.util.Optional;
+@FacesConfig(version = FacesConfig.Version.JSF_2_3)
+
 @RequestScoped
 @Named("EntidadpConverter")
 public class EntidadpConverter implements Converter<EntidadPrincipal> {
