@@ -26,6 +26,8 @@ import java.util.List;
  *
  * @author Jonny,Daniel,Elvis,Edisson
  */
+@FacesConfig(version = FacesConfig.Version.JSF_2_3)
+
 @Model
 @SessionScoped
 public class UsuarioBeans implements Serializable {
